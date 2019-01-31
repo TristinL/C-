@@ -1,5 +1,5 @@
-// Chapter 2 quiz #4
-// This program calculates the distance a ball has dropped after 0, 1, 2, 3, 4, and 5 seconds; displaying the output as the ball's distance above the ground. It excludes the idea that the ball will bounce.
+// This program calculates the distance a ball has dropped after 0, 1, 2, 3, 4, and 5 seconds;
+// displaying the output as the ball's distance above the ground. It excludes the idea that the ball will bounce.
 
 #include<iostream>
 #include "Constants.h"
@@ -7,28 +7,29 @@
 using namespace std;
 
 void ballHeight(int time, int height){
-	float distanceFallen = myConstants::my_gravity * time * time / 2;
 	
-	if(distanceFallen > height){
-		cout<< "The ball is on the ground"<< endl;
+	if((myConstants::my_gravity * time * time / 2) >= height){			//Determine distance fallen by eqn:
+											//(gt^2)/2. If it is >= the height of
+		cout<< "The ball is on the ground"<< endl;				//the tower, the ball is on the ground
 	}
 	else{
-		cout<< "At "<< time<< " seconds, the ball is at height: "<< height - distanceFallen<< endl;
+											//Else the ball is at a height above the
+		cout<< "At "<< time<< " seconds, the ball is at height: "		//ground equal to the height of the tower
+			<< height - (myConstants::my_gravity * time * time / 2)<< endl;	//minus the distance fallen
 	}
-}
-
-
-int main(){
+}											//As a way to reduce memory cost I removed
+											//variable distance_fallen and replaced w/
+int main(){										//Eqn used to determine that value.
+	
 	cout<< "Enter the initial height of the tower in meters: "<<endl;
+											//Gather height of tower from user
 	int height_initial;
+	
 	cin>> height_initial;
 	
-	
-	ballHeight(0, height_initial);
-	ballHeight(1, height_initial);
-	ballHeight(2, height_initial);
-	ballHeight(3, height_initial);
-	ballHeight(4, height_initial);
-	ballHeight(5, height_initial);
-	
+	for(int i = 0; i > 6; i++){							//Run the ballHeight function five times
+											//Removed six explicit calls for a loop
+		ballHeight(i, height_initial)
+			
+	}	
 }
